@@ -1,272 +1,45 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Truth or Dare - Adult Couple Game</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #1a1a1a;
-      color: #f0f0f0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-      margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      margin-bottom: 10px;
-      color: #ff4081;
-    }
-    #game-container {
-      background: #2c2c2c;
-      border-radius: 10px;
-      padding: 20px;
-      max-width: 500px;
-      width: 100%;
-      box-shadow: 0 0 15px #ff4081;
-    }
-    button {
-      background: #ff4081;
-      border: none;
-      color: white;
-      padding: 15px 30px;
-      margin: 10px;
-      font-size: 1.2rem;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    button:hover {
-      background: #e73370;
-    }
-    #prompt {
-      margin-top: 20px;
-      font-size: 1.3rem;
-      min-height: 80px;
-      text-align: center;
-      padding: 10px;
-      border: 2px solid #ff4081;
-      border-radius: 8px;
-      background: #3a3a3a;
-    }
-    #reset-btn {
-      background: #555;
-      margin-top: 20px;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Truth or Dare</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Truth or Dare - Adult Couple Game</h1>
-  <div id="game-container">
-    <p>Press the button to get a Truth or Dare challenge:</p>
-    <div>
-      <button id="challenge-btn">Get Challenge</button>
+  <!-- Spiciness Level Screen -->
+  <section class="screen" id="spice-screen">
+    <h2>Spiciness level</h2>
+    <div class="levels">
+      <button class="level">Soft</button>
+      <button class="level">Mild</button>
+      <button class="level">Hot</button>
+      <button class="level">Extra Hot</button>
     </div>
-    <div id="prompt"></div>
-    <button id="reset-btn" style="display:none;">Play Again</button>
-  </div>
+    <button class="action-btn">Select Players</button>
+  </section>
 
-  <script>
-    const truthPrompts = [
-      "What's your biggest fantasy?",
-      "Have you ever had a secret crush on someone else?",
-      "What's the most adventurous place you've been intimate?",
-      "What's a secret you've never told anyone?",
-      "What's your favorite way to be kissed?",
-      "What's something naughty you've always wanted to try?",
-      "Have you ever lied to your partner about something intimate?",
-      "What's your wildest dream involving your partner?",
-      "What's a secret turn-on you have?",
-      "What's the most embarrassing thing that's happened to you in bed?",
-      "What's the naughtiest thing you've done in public?",
-      "Have you ever fantasized about someone else while with your partner?",
-      "What's a secret desire you haven't shared yet?",
-      "What's the most daring thing you've done in the bedroom?",
-      "What's a fantasy you want to fulfill with your partner?",
-      "Have you ever had a steamy dream about your partner?",
-      "What's the most romantic thing you've done that was also naughty?",
-      "What's a secret you've kept from your partner?",
-      "What's your favorite body part of your partner and why?",
-      "What's the wildest place you've ever been intimate?",
-      "Give your partner a seductive look for 30 seconds without breaking eye contact",
-      "Whisper your partner's name in their ear in the most seductive way possible",
-      "Kiss your partner's neck for one minute",
-      "Tell your partner exactly what you want to do to them tonight",
-      "Give your partner a lap dance to an imaginary song",
-      "Remove one piece of your partner's clothing very slowly",
-      "Massage your partner's inner thighs for two minutes",
-      "Kiss your partner passionately for two minutes straight",
-      "Tell your partner your favorite thing about making love to them",
-      "Give your partner a hickey somewhere only you can see",
-      "Describe in detail how you want your partner to touch you",
-      "Blindfold your partner and kiss them somewhere unexpected",
-      "Take a steamy shower or bath together",
-      "Give your partner a full-body massage with oils",
-      "Tell your partner your dirtiest fantasy about them",
-      "Kiss your partner's body from head to toe",
-      "Recreate your first kiss but make it more passionate",
-      "Give your partner goosebumps using only your breath",
-      "Tell your partner what you love most about their body",
-      "Make your partner feel like the most desirable person alive",
-      "Have you ever fantasized about a threesome or group experience?",
-      "What's a secret kink or fetish you have?",
-      "What's the most spontaneous thing you've done sexually?",
-      "Have you ever been caught in a compromising situation?",
-      "What's your favorite type of foreplay?",
-      "What's a naughty habit you have that your partner doesn't know about?",
-      "What's the most romantic thing your partner has done for you?",
-      "Have you ever faked an orgasm? Why?",
-      "What's a sexual fantasy you want to try but haven't told your partner yet?"
-    ];
+  <!-- Home Screen -->
+  <section class="screen" id="home-screen">
+    <h1 class="logo">TRUTH <span>or</span> DARE</h1>
+    <button class="play-btn">Play</button>
+    <div class="bottom-buttons">
+      <button class="icon-btn">+</button>
+      <button class="icon-btn">⚙️</button>
+    </div>
+  </section>
 
-    const darePrompts = [
-      "Send your partner a flirty text right now.",
-      "Give your partner a sensual massage for 2 minutes.",
-      "Whisper something naughty in your partner's ear.",
-      "Do a slow, seductive dance for your partner.",
-      "Try a new kissing style for 1 minute.",
-      "Let your partner blindfold you for 2 minutes.",
-      "Share a secret fantasy with your partner.",
-      "Give your partner a playful spanking.",
-      "Act out a romantic scene from a movie.",
-      "Take a selfie making a silly face and share it with your partner.",
-      "Kiss your partner passionately for 30 seconds.",
-      "Feed your partner a bite of something sweet sensually.",
-      "Slowly trace your partner's body with your fingertips.",
-      "Whisper a naughty secret to your partner.",
-      "Give your partner a lap dance for 1 minute.",
-      "Try a new position suggested by your partner.",
-      "Write a short love note and read it aloud to your partner.",
-      "Playfully tickle your partner for 30 seconds.",
-      "Give your partner a gentle neck massage.",
-      "Pretend to be a character from a romantic movie and act it out.",
-      "Remove one piece of your clothing for every compliment your partner gives you.",
-      "Let your partner blindfold you and kiss you wherever they want for 1 minute.",
-      "Demonstrate your favorite position using pillows, then have your partner join you.",
-      "Touch yourself the way you do when your partner isn't around while they watch.",
-      "Let your partner place an ice cube anywhere on your body and trace it wherever they want.",
-      "Role play meeting each other for the first time at a bar, but you can only communicate through touch.",
-      "Let your partner tie your hands and tease you for 2 minutes without being able to touch back.",
-      "Describe in detail what you want your partner to do to you tonight using at least 10 specific words.",
-      "Take off your partner's underwear using only your teeth.",
-      "Give your partner a sensual massage, hitting all their erogenous zones except the obvious ones.",
-      "Act out your favorite sex scene from a movie.",
-      "Take turns being dominant for 5 minutes each, showing exactly what you want.",
-      "Play a game of strip rock, paper, scissors until someone is completely naked.",
-      "Guide your partner's hands to show them exactly how you like to be touched in your most sensitive areas.",
-      "Send your partner into another room, then text them three things you're going to do to them when they return.",
-      "Start foreplay in an unusual place in your home.",
-      "Give your partner pleasure while maintaining direct eye contact the entire time.",
-      "Let your partner draw on your body with chocolate sauce, then lick it off.",
-      "Make out in front of a mirror for 3 minutes, describing what you see and how it makes you feel.",
-      "Let your partner spank you and honestly tell them if you want it harder, softer, or just right.",
-      "Send your ex a message saying you miss them.",
-      "Make eye contact with the person to your right and moan for 10 seconds.",
-      "Ask a stranger for advice on a strange rash you’ve recently developed.",
-      "Make your orgasm face the next stranger you see until they make eye contact with you.",
-      "Seductively eat a banana whilst locking eyes with the person to your left.",
-      "Send one of your parents a sext and don’t reply for one hour.",
-      "Pass your phone to the person on your left and let them post a sexual status to your Facebook.",
-      "Perform a seductive dance in front of the group.",
-      "Pick up the nearest object to you and demonstrate how to put on protection.",
-      "Close your eyes, pick a random phone contact and leave them a dirty voicemail.",
-      "Drop an ice cube in your pants.",
-      "Google the dirtiest thing you can think of and show it to the person next to you.",
-      "FaceTime your most recent contact, burp, then hang up.",
-      "Smell everyone’s armpits and rank them from best to worst.",
-      "Tell us the one bedtime secret no one knows about you.",
-      "Lick your partner’s ears.",
-      "Spank, squeeze, and pinch your partner’s butt.",
-      "Place an ice cube on the girl’s belly button until it melts. The guy can only use his lips to keep the cube in place or move it around. The guy can only use his lips to keep the ice cube in place or move it around *it’s a lot harder to keep the ice cube in place when it starts to melt or the girl starts to feel cold*.",
-      "Pass a candy to your partner using just the lips / unwrap a candy together using only the lips.",
-      "Kiss each other for a whole minute.",
-      "Give your partner a lap dance.",
-      "One partner lies down. The other partner moves their hand or a feather all over the laying partner’s body including all strategic regions.",
-      "Unhook your girlfriend’s bra and take it off her body using just one hand.",
-      "Lift your girlfriend’s shirt up from the back all the way to the collar using just your teeth.",
-      "Stroke your partner’s tee shirt/pants until we see the pants move or the tee shirt stiffen.",
-      "Eat a melting piece of chocolate off your girlfriend’s boobs *cleavage will do for the less horny ones*.",
-      "Give your man a boner without touching his member.",
-      "Suck all ten of your partner’s toes / Kiss your partner’s feet and legs",
-      "Show everyone playing the game your favorite porn site",
-      "Show everyone playing the game your craziest sex position",
-      "Give your partner a hickey",
-      "Teach everyone your kinkiest sex technique",
-      "Recreate the sounds you make during sex",
-      "Demonstrate how to give a blow job on an unpeeled banana",
-      "Kiss and lick your partner’s feet for 2 minutes",
-      "Bend your partner over your knee and spank them ten times",
-      "Bend over your partner’s knee and let them spank you twenty times",
-      "Slowly kiss your partner from their feet to the top of their head",
-      "Grab your partner’s hair and pull them into your boobs/crotch",
-      "Twerk for your partner/for the the group",
-      "Swap clothes with your partner",
-      "Race your partner to see who can cum the fastest",
-      "Kiss your partner while also eating a candy",
-      "Your partner has to use a sex toy on themselves the next time you have sex",
-      "Go commando for 24 hours. (Commando = wear no underwear)",
-      "Guys: Finger your girl, then taste it. Women: Taste his precum",
-      "Drink a shot from your partner’s belly button",
-      "Pass a candy/grape to your partner using only your lips",
-      "Recreate the weirdest thing that ever happened to you during sex",
-      "Try to turn your partner without touching them",
-      "Give your partner anilingus",
-      "Give your female partner oral sex while they sit at the computer/watch TV/play video games",
-      "Eat fruit/food off your partner",
-      "Undress your partner with everything but your hands",
-      "Get yourself off by dry humping your partner",
-      "Wear a butt plug for the entire day",
-      "Try snowballing with your partner after a blow job",
-      "Don’t masturbate for an entire month",
-      "Strip for your partner",
-      "Suck your partner’s nipples",
-      "Guys: Spell the alphabet on your girl’s pussy with your tongue. Women: Spell the alphabet on the tip of your man’s penis with your tongue",
-      "Rest your hands inside your partner’s pants for the next 5/10/20 minutes",
-      "Sit on your partner’s face",
-      "Lick whipped cream off your partner’s chest/breasts/pussy/penis",
-      "Masturbate in front of the group/me",
-      "With a blindfold on, try to identify everyone in the group by their genitals",
-      "Stay naked for the next 2/5/10/30 minutes",
-      "Make your partner cum using only your lips",
-      "Take a shower and wash your partner",
-      "Send your partner a naked snap",
-      "Tell two people in the group to start kissing, then direct them to start doing other stuff like undressing, groping, etc",
-      "Orgasm",
-      "Send a naughty text to your partner."
-    ];
+  <!-- Challenge Screen -->
+  <section class="screen" id="game-screen">
+    <h2>John</h2>
+    <div class="challenge-card">
+      <h3>Dare</h3>
+      <p>Show everyone your most embarrassing photo.</p>
+    </div>
+    <button class="action-btn">Next</button>
+  </section>
 
-    const promptDiv = document.getElementById('prompt');
-    const resetBtn = document.getElementById('reset-btn');
-    const challengeBtn = document.getElementById('challenge-btn');
-
-    function getRandomPrompt(prompts) {
-      const index = Math.floor(Math.random() * prompts.length);
-      return prompts[index];
-    }
-
-    function showPrompt() {
-      const type = Math.random() < 0.5 ? "truth" : "dare";
-      let promptText = "";
-      if (type === "truth") {
-        promptText = getRandomPrompt(truthPrompts);
-      } else {
-        promptText = getRandomPrompt(darePrompts);
-      }
-      promptDiv.textContent = promptText;
-      challengeBtn.style.display = "none";
-      resetBtn.style.display = "inline-block";
-    }
-
-    challengeBtn.addEventListener('click', () => showPrompt());
-    resetBtn.addEventListener('click', () => {
-      promptDiv.textContent = "";
-      challengeBtn.style.display = "inline-block";
-      resetBtn.style.display = "none";
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
