@@ -239,35 +239,32 @@
       "Send a naughty text to your partner."
     ];
 
-    const truthBtn = document.getElementById('truth-btn');
-    const dareBtn = document.getElementById('dare-btn');
     const promptDiv = document.getElementById('prompt');
     const resetBtn = document.getElementById('reset-btn');
+    const challengeBtn = document.getElementById('challenge-btn');
 
     function getRandomPrompt(prompts) {
       const index = Math.floor(Math.random() * prompts.length);
       return prompts[index];
     }
 
-    function showPrompt(type) {
+    function showPrompt() {
+      const type = Math.random() < 0.5 ? "truth" : "dare";
       let promptText = "";
       if (type === "truth") {
         promptText = getRandomPrompt(truthPrompts);
-      } else if (type === "dare") {
+      } else {
         promptText = getRandomPrompt(darePrompts);
       }
       promptDiv.textContent = promptText;
-      truthBtn.style.display = "none";
-      dareBtn.style.display = "none";
+      challengeBtn.style.display = "none";
       resetBtn.style.display = "inline-block";
     }
 
-    truthBtn.addEventListener('click', () => showPrompt("truth"));
-    dareBtn.addEventListener('click', () => showPrompt("dare"));
+    challengeBtn.addEventListener('click', () => showPrompt());
     resetBtn.addEventListener('click', () => {
       promptDiv.textContent = "";
-      truthBtn.style.display = "inline-block";
-      dareBtn.style.display = "inline-block";
+      challengeBtn.style.display = "inline-block";
       resetBtn.style.display = "none";
     });
   </script>
